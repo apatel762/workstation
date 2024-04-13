@@ -40,17 +40,23 @@ jobs:
     - name: Set up cosign
       uses: sigstore/cosign-installer@v3.5.0
 
-    - name: Build and push Docker image
+    - name: Build and push container image
       uses: docker/build-push-action@v5
       with:
         context: .
         file: ./Containerfile
         push: true
         tags: ${{ env.CONTAINER }}
+        outputs: type=docker,dest=/tmp/docker-output
+  
+    - name: Extract image digest
+      run: |
+        DIGEST=$(cat /tmp/docker-output | jq -r '.digest')
+        echo "DIGEST=$DIGEST" >> $GITHUB_ENV
 
-    - name: Sign the Docker image
+    - name: Sign the container image
       run: |
         echo "${{ secrets.COSIGN_PRIVATE_KEY }}" > cosign.key
-        cosign sign --key cosign.key ${{ env.CONTAINER }}
+        cosign sign --key cosign.key ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}@$DIGEST
       env:
-        COSIGN_PASSWORD: "${{ secrets.COSIGN_PRIVATE_KEY_PASSWORD }}"
+        COSIGN_PASSWORD: ${{ secrets.COSIGN_PRIVATE_KEY_PASSWORD }}
