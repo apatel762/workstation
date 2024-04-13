@@ -41,6 +41,11 @@ jobs:
           ./Containerfile
         image: "ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}"
 
+    - name: Output of image build
+      if: github.event_name != 'pull_request'
+      run: |
+        echo "${{ toJSON(steps.build_image.outputs) }}"
+
     # -----------------------------------------------------------------
     # Publish the image. ('master' only)
  
@@ -69,7 +74,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Outputs
+    - name: Output of image publish
       if: github.event_name != 'pull_request'
       run: |
         echo "${{ toJSON(steps.push_to_registry.outputs) }}"
