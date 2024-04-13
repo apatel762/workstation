@@ -1,0 +1,56 @@
+name: Build and Publish Image
+
+on:
+  push:
+    branches:
+      - '*'
+  schedule:
+    # 3pm-ish UTC everyday (timed against official Fedora container pushes)
+    - cron: '5 15 * * *'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v4
+
+    # build the fully qualified container name and save it to the environment
+    # so we can use it later
+    # the name that we build here works for any branch
+    - name: Determine full container name
+      id: tag_name
+      run: |
+        BRANCH_NAME="${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}"
+        NORMALIZED_BRANCH_NAME=$(echo $BRANCH_NAME | sed 's|/|_|g')
+        echo "NORMALIZED_BRANCH_NAME=$NORMALIZED_BRANCH_NAME" >> $GITHUB_ENV
+        echo "CONTAINER=ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:$NORMALIZED_BRANCH_NAME" >> $GITHUB_ENV
+
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up cosign
+      uses: sigstore/cosign-installer@v3.5.0
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Containerfile
+        push: true
+        tags: ${{ env.CONTAINER }}
+
+    - name: Sign the Docker image
+      run: |
+        echo "${{ secrets.COSIGN_PRIVATE_KEY }}" > cosign.key
+        cosign sign --key cosign.key ${{ env.CONTAINER }}
+      env:
+        COSIGN_PASSWORD: "${{ secrets.COSIGN_PRIVATE_KEY_PASSWORD }}"
