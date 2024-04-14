@@ -22,6 +22,25 @@ Then follow the instructions in the [INSTALLATION](INSTALLATION.md) page to reba
 
 Assumption: you have booted into a fresh installation of this custom workstation image.
 
+### Password manager
+
+Copy the KeePass database from another device to this device using an external hard drive (recommended). If in a pinch, send it to yourself on WhatsApp and download it via WhatsApp Web.
+
+Set stricter permissions on the files as well:
+
+```bash
+chmod u=r,go-rwx Key
+chmod u=rw,go-rwx Passwords.kbdx
+```
+
+(Permissions settings are likely not necessary but might as well do them...)
+
+You must have the password manager on your machine in order to install the dotfiles. This is because the dotfiles need to lookup secrets.
+
+### Dotfiles
+
+**TODO** need to verify these steps:
+
 Get `chezmoi`:
 
 ```
