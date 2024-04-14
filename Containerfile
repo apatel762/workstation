@@ -14,6 +14,7 @@ RUN rpm-ostree install -y chromium keepassxc distrobox
 
 COPY rootfs/etc /etc
 COPY rootfs/usr /usr
-COPY rootfs/var /var
 
 RUN ostree container commit
+
+COPY rootfs/var /var
