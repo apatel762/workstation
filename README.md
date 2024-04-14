@@ -39,13 +39,15 @@ You must have the password manager on your machine in order to install the dotfi
 
 ### Dotfiles
 
-**TODO** need to verify these steps:
+Enter the [workspace](https://github.com/apatel762/workspace).
 
-Get `chezmoi`:
-
-```
-cd "$(mktemp -d)"
-sh -c "$(curl -fsLS get.chezmoi.io)"
+```bash
+distrobox create --pull --image ghcr.io/apatel762/workspace workspace
+distrobox enter workspace
 ```
 
-The binary will be downloaded to `./bin/chezmoi` (relative to your current directory). This is nice because you can delete it when you're done installing the dotfiles.
+The `chezmoi` app should be installed and ready to use. But first, in the KeePassXC GUI, find the SSH key entry and add it to the agent. (As of writing this, you just select the entry and hit `Ctrl+H`).
+
+```bash
+chezmoi init git@github.com:apatel762/dotfiles.git
+```
