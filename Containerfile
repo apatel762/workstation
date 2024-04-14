@@ -7,8 +7,7 @@ ARG RPM_FUSION_FREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 ARG RPM_FUSION_NONFREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${FEDORA_VERSION}.noarch.rpm
 
 # Add RPM Fusion repos
-RUN dnf install -y ${RPM_FUSION_FREE} \
-    && dnf install -y ${RPM_FUSION_NONFREE}
+RUN rpm-ostree install -y ${RPM_FUSION_FREE} ${RPM_FUSION_NONFREE}
 
 # Install a web browser, password manager, and a toolbox app
 RUN rpm-ostree install -y chromium keepass-xc distrobox
