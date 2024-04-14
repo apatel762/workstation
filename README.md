@@ -14,7 +14,7 @@ Install Fedora Silverblue:
 - Boot from the flash drive (Press F10 or similar during startup)
 - Go through the installation wizard
 
-**Important**: ensure that your username is `apatel`. There are a few things in this workstation image that depend on this (e.g. user profile picture).
+**Important**: ensure that your username is `apatel`. There are a few things in the [dotfiles](https://github.com/apatel762/dotfiles) that depend on this (e.g. user profile picture).
 
 Then follow the instructions in the [INSTALLATION](INSTALLATION.md) page to rebase onto this custom image.
 
