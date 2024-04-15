@@ -53,3 +53,5 @@ chezmoi init git@github.com:apatel762/dotfiles.git
 ```
 
 TODO: next step is to set up GPG key. I think I finally need to confront the fact that I need to move files from my laptop to my new workstation.
+
+copied over files following this: https://askubuntu.com/questions/545655/backup-your-home-directory-with-rsync-and-skip-useless-folders/545676#545676 need to document it
