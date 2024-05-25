@@ -1,5 +1,9 @@
 # Installation
 
+[README](./README.md)
+
+[Back](./INSTALLATION.md)
+
 Assumption: you are starting from a vanilla Fedora Silverblue (or similar) installation.
 
 1. Remove layered packages

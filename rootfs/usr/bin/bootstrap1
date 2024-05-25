@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# this enables all custom units and timers, as per
+# our .preset files in /usr/etc
+systemctl preset-all
+systemctl --user preset-all
