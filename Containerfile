@@ -16,5 +16,3 @@ COPY rootfs/etc /etc
 COPY rootfs/usr /usr
 
 RUN ostree container commit
-
-COPY rootfs/var /var
