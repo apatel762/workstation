@@ -2,6 +2,26 @@
 Description=Mount SSD1 to /var/mnt/ssd1
 After=local-fs.target
 
+# The mount information was discovered using the below steps:
+#
+# Find the block device that corresponds to the
+# hard drive that you want to mount:
+#
+#  lsblk
+#
+# or
+#
+#  fdisk -l
+#
+# For me, the block device was sda1, I then needed
+# the UUID of the block device, which I found by
+# running:
+#
+#  sudo blkid /dev/sdb1
+#
+# The UUID is then used below to tell `systemd` what
+# you want to mount.
+#
 [Mount]
 What=UUID=0382c346-a3e2-42f4-96f4-0c7efd4c9929
 Where=/var/mnt/ssd1
