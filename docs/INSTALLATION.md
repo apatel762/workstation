@@ -1,6 +1,6 @@
 # Installation
 
-[README](./README.md)
+[README](../README.md)
 
 [Back](./INSTALLATION.md)
 

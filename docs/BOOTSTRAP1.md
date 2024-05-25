@@ -1,6 +1,6 @@
 # bootstrap1
 
-[Back](./README.md)
+[Back](../README.md)
 
 Assumption: you have booted into a fresh installation of this custom workstation image.
 
@@ -14,7 +14,7 @@ bootstrap1
 
 to set up `systemd` integration with our custom units.
 
-**You may want to double check the device UUID in [var-mnt-ssd1.mount](./rootfs/usr/etc/systemd/system/var-mnt-ssd1.mount)**
+**You may want to double check the device UUID in [var-mnt-ssd1.mount](../rootfs/usr/etc/systemd/system/var-mnt-ssd1.mount)**
 
 ## Password manager
 

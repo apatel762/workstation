@@ -1,8 +1,16 @@
 # bootstrap0
 
-[Back](./README.md)
+[Back](../README.md)
 
 Assumption: brand new machine.
+
+## Backup
+
+If you haven't done so already, you need to take a backup of your machine. Open the 'Files' window and open an external hard drives. Open another 'Files' window and open your Home directory.
+
+Then, just copy folders over one by one until you've moved everything of value.
+
+## Fresh installation
 
 Install Fedora Silverblue:
 
