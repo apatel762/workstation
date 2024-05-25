@@ -17,7 +17,7 @@ After=local-fs.target
 # the UUID of the block device, which I found by
 # running:
 #
-#  sudo blkid /dev/sdb1
+#  sudo blkid /dev/sda1
 #
 # The UUID is then used below to tell `systemd` what
 # you want to mount.
