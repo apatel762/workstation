@@ -9,8 +9,8 @@ ARG RPM_FUSION_NONFREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-fre
 # Add RPM Fusion repos
 RUN rpm-ostree install -y ${RPM_FUSION_FREE} ${RPM_FUSION_NONFREE}
 
-# Install a web browser, password manager, and a toolbox app
-RUN rpm-ostree install -y chromium keepassxc distrobox
+# Install a web browser, password manager
+RUN rpm-ostree install -y chromium keepassxc
 
 COPY rootfs/etc /etc
 COPY rootfs/usr /usr
