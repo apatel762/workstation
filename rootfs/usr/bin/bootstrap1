@@ -21,11 +21,3 @@ systemctl start rpm-ostreed-automatic.timer
 
 systemctl enable var-mnt-ssd1.mount
 systemctl start var-mnt-ssd1.mount
-
-# --------------------------------------- #
-
-# flatpak (user-level) updates
-
-systemctl --user enable flatpak-system-update.service
-systemctl --user enable flatpak-system-update.timer
-systemctl --user start flatpak-system-update.timer
