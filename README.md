@@ -42,9 +42,27 @@ rpm-ostree reset
 sudo ostree admin pin 0
 ```
 
-3. Populate `/etc/containers/policy.json` from [here](rootfs/etc/containers/policy.json)
-4. Populate `/etc/pki/containers/workstation.pub` from [here](rootfs/etc/pki/containers/workstation.pub)
-5. Populate `/etc/containers/registries.d/ghcr.io.yaml` from [here](rootfs/etc/containers/registries.d/ghcr.io.yaml)
+3. Populate `/etc/containers/policy.json`
+
+```bash
+sudo mkdir -p /etc/containers
+sudo curl -o /etc/containers/policy.json https://raw.githubusercontent.com/apatel762/workstation/master/rootfs/etc/containers/policy.json
+```
+
+4. Populate `/etc/pki/containers/workstation.pub`
+
+```bash
+sudo mkdir -p /etc/pki/containers
+sudo curl -o /etc/pki/containers/workstation.pub https://raw.githubusercontent.com/apatel762/workstation/master/rootfs/etc/pki/containers/workstation.pub
+```
+
+5. Populate `/etc/containers/registries.d/ghcr.io.yaml`
+
+```bash
+sudo mkdir -p /etc/containers/registries.d
+sudo curl -o /etc/containers/registries.d/ghcr.io.yaml https://raw.githubusercontent.com/apatel762/workstation/master/rootfs/etc/containers/registries.d/ghcr.io.yaml
+```
+
 6. Rebase!
 
 ```bash
