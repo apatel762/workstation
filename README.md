@@ -91,24 +91,11 @@ You must have the password manager on your machine in order to install the dotfi
 
 *Assumption: you want to enter a fresh workspace container.*
 
-Delete the existing copy if exists:
-
-```bash
-distrobox rm --force workspace
-```
-
-Enter the [workspace](https://github.com/apatel762/workspace).
-
-```bash
-distrobox create --pull --image ghcr.io/apatel762/workspace workspace
-distrobox enter workspace
-```
+Enter the [workspace](https://github.com/apatel762/workspace) following the instructions in the repo.
 
 The `chezmoi` app should be installed and ready to use. But first, in the KeePassXC GUI, find the SSH key entry and add it to the agent. (As of writing this, you just select the entry and hit `Ctrl+H`).
 
-```bash
-chezmoi init git@github.com:apatel762/dotfiles.git
-```
+Then, setup your dotfiles as per the [dotfiles](https://github.com/apatel762/dotfiles) repo.
 
 ## Setup GPG key
 
