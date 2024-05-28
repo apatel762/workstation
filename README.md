@@ -30,22 +30,25 @@ Then follow the instructions in the [INSTALLATION](INSTALLATION.md) page to reba
 
 *Assumption: brand new machine has got Fedora Silverblue installed onto it.*
 
-1. Remove layered packages
+Remove layered packages:
 
 ```bash
 rpm-ostree reset
 ```
 
-2. Reboot, and pin the deployment
+Reboot, and pin the current deployment:
 
 ```bash
 sudo ostree admin pin 0
 ```
 
-3. Populate `/etc/containers/policy.json` from [here](rootfs/etc/containers/policy.json)
-4. Populate `/etc/pki/containers/workstation.pub` from [here](rootfs/etc/pki/containers/workstation.pub)
-5. Populate `/etc/containers/registries.d/ghcr.io.yaml` from [here](rootfs/etc/containers/registries.d/ghcr.io.yaml)
-6. Rebase!
+Copy configuration to `/etc`:
+
+```bash
+sudo rsync -av rootfs/etc /
+```
+
+Rebase:
 
 ```bash
 rpm-ostree rebase ostree-image-signed:docker://ghcr.io/apatel762/workstation:latest
