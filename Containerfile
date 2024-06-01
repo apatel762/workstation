@@ -8,8 +8,7 @@ ARG RPM_FUSION_NONFREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-fre
 
 RUN rpm-ostree install -y \
   ${RPM_FUSION_FREE} \
-  ${RPM_FUSION_NONFREE} \
-  "https://repository.mullvad.net/rpm/stable/mullvad.repo"
+  ${RPM_FUSION_NONFREE}
 
 RUN rpm-ostree install -y \
   chromium \
