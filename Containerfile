@@ -13,7 +13,8 @@ RUN rpm-ostree install -y \
 RUN rpm-ostree install -y \
   chromium \
   keepassxc \
-  openssl
+  openssl \
+  wireguard-tools
 
 COPY rootfs/etc /etc
 COPY rootfs/usr /usr
