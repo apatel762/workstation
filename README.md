@@ -128,3 +128,15 @@ gpg --list-secret-keys
 ```
 
 You should see the key.
+
+---
+
+## Development
+
+### Building a container
+
+To build one of the container images, use:
+
+```
+podman build --tag localhost/workstation:latest .
+```
