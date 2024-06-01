@@ -6,6 +6,8 @@ ARG FEDORA_VERSION
 ARG RPM_FUSION_FREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${FEDORA_VERSION}.noarch.rpm
 ARG RPM_FUSION_NONFREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${FEDORA_VERSION}.noarch.rpm
 
+RUN rpm-ostree refresh-md
+
 RUN rpm-ostree install -y \
   ${RPM_FUSION_FREE} \
   ${RPM_FUSION_NONFREE}
