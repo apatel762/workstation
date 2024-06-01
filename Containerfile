@@ -6,16 +6,14 @@ ARG FEDORA_VERSION
 ARG RPM_FUSION_FREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${FEDORA_VERSION}.noarch.rpm
 ARG RPM_FUSION_NONFREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${FEDORA_VERSION}.noarch.rpm
 
-RUN rpm-ostree install -y \
-  ${RPM_FUSION_FREE} \
-  ${RPM_FUSION_NONFREE} \
-  "https://repository.mullvad.net/rpm/stable/mullvad.repo"
+# Add RPM Fusion repos
+RUN rpm-ostree install -y ${RPM_FUSION_FREE} ${RPM_FUSION_NONFREE}
 
+# Install a web browser, password manager, and other things
 RUN rpm-ostree install -y \
   chromium \
   keepassxc \
-  openssl \
-  mullvad-vpn
+  openssl
 
 COPY rootfs/etc /etc
 COPY rootfs/usr /usr
