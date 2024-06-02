@@ -14,7 +14,9 @@ RUN rpm-ostree install -y \
   chromium \
   keepassxc \
   openssl \
-  wireguard-tools
+  wireguard-tools \
+  gnome-shell-extension-blur-my-shell \
+  gnome-shell-extension-gsconnect
 
 COPY rootfs/etc /etc
 COPY rootfs/usr /usr
