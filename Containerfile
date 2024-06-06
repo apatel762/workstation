@@ -15,7 +15,8 @@ RUN rpm-ostree install -y \
   keepassxc \
   openssl \
   wireguard-tools \
-  gnome-shell-extension-blur-my-shell
+  gnome-shell-extension-blur-my-shell \
+  gnome-shell-extension-appindicator
 
 COPY rootfs/etc /etc
 COPY rootfs/usr /usr
