@@ -15,6 +15,7 @@ RUN rpm-ostree install -y \
   keepassxc \
   openssl \
   wireguard-tools \
+  yubikey-manager \
   gnome-shell-extension-blur-my-shell \
   gnome-shell-extension-appindicator
 
