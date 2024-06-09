@@ -1,0 +1,22 @@
+#%PAM-1.0
+auth       include      u2f_sufficient
+
+########################################################
+# Test changes to this file by opening a new terminal  #
+# window and running any command that requires         #
+# elevated privileges:                                 #
+#                                                      #
+#   sudo ls /root                                      #
+#                                                      #
+# With a YubiKey for example, it would start flashing  #
+# after you try to run the command.                    #
+########################################################
+
+# Below are the original entries
+
+auth       include      system-auth
+account    include      system-auth
+password   include      system-auth
+session    optional     pam_keyinit.so revoke
+session    required     pam_limits.so
+session    include      system-auth
