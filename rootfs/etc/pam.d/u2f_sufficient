@@ -1,0 +1,12 @@
+#%PAM-1.0
+auth       sufficient     pam_u2f.so
+
+############################################################################
+#                                                                          #
+#  This target marks the U2F authentication as `sufficient` but not        #
+#  `required`. If the hardware security key is not plugged in, the system  #
+#  will fallback to using it's default authentication mechanisms.          #
+#                                                                          #
+#  ref.: https://docs.fedoraproject.org/en-US/quick-docs/using-yubikeys/   #
+#                                                                          #
+############################################################################
