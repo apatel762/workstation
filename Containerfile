@@ -18,7 +18,6 @@ RUN rpm-ostree install -y \
   yubikey-manager \
   pam-u2f \
   pamu2fcfg \
-  yubikey-manager \
   gnome-shell-extension-blur-my-shell \
   gnome-shell-extension-appindicator
 
