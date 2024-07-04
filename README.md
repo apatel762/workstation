@@ -24,8 +24,6 @@ Install Fedora Silverblue:
 
 **Important**: ensure that your username is `apatel`. There are a few things in the [dotfiles](https://github.com/apatel762/dotfiles) that depend on this (e.g. user profile picture).
 
-Then follow the instructions in the [INSTALLATION](INSTALLATION.md) page to rebase onto this custom image.
-
 ## Rebase onto this image
 
 *Assumption: brand new machine has got Fedora Silverblue installed onto it.*
