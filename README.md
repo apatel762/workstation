@@ -127,21 +127,6 @@ gpg --list-secret-keys
 
 You should see the key.
 
-## VPN
-
-In the dotfiles repo I am templating a configuration file in `~/.local/share` and getting NetworkManager to look at this so that I can toggle the VPN connection on/off through the GNOME UI natively.
-
-This is nice, but there are more features in the app.
-
-```bash
-cd ~/Downloads
-wget https://repository.mullvad.net/rpm/beta/mullvad.repo
-sudo cp -vu ~/Downloads/mullvad.repo -t /etc/yum.repos.d
-rpm-ostree install -y mullvad-vpn
-```
-
-**WIP: doesn't work in Containerfile for some reason so have to do this manually**
-
 ---
 
 ## Development
