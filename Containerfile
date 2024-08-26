@@ -2,6 +2,9 @@ ARG FEDORA_VERSION=40
 
 FROM quay.io/fedora-ostree-desktops/silverblue:${FEDORA_VERSION}
 
+COPY rootfs/etc /etc
+COPY rootfs/usr /usr
+
 ARG FEDORA_VERSION
 ARG RPM_FUSION_FREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${FEDORA_VERSION}.noarch.rpm
 ARG RPM_FUSION_NONFREE=https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${FEDORA_VERSION}.noarch.rpm
@@ -22,8 +25,5 @@ RUN rpm-ostree install -y \
   gnome-shell-extension-blur-my-shell \
   gnome-shell-extension-appindicator \
   mullvad-vpn
-
-COPY rootfs/etc /etc
-COPY rootfs/usr /usr
 
 RUN ostree container commit
