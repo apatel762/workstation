@@ -20,7 +20,8 @@ RUN rpm-ostree install -y \
   pamu2fcfg \
   yubikey-manager \
   gnome-shell-extension-blur-my-shell \
-  gnome-shell-extension-appindicator
+  gnome-shell-extension-appindicator \
+  mullvad-vpn
 
 COPY rootfs/etc /etc
 COPY rootfs/usr /usr
