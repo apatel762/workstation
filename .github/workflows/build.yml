@@ -58,7 +58,7 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push to GitHub Container Registry
-      uses: Wandalen/wretry.action@v3.7.0
+      uses: Wandalen/wretry.action@v3.7.2
       id: push_to_registry
       if: github.event_name != 'pull_request'
       env:
