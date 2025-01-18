@@ -29,7 +29,8 @@ ARG MULLVAD_DOWNLOAD=/tmp/mullvad.rpm
 ADD ${MULLVAD_URL} ${MULLVAD_DOWNLOAD}
 
 # ref.: https://github.com/mullvad/mullvadvpn-app/issues/1570#issuecomment-602255731 (for SELinux commands below)
-RUN ln -sf '/usr/lib/opt/Mullvad VPN' '/opt/Mullvad VPN' \
+RUN mkdir -p "/opt/Mullvad VPN" \
+  && ln -s '/usr/lib/opt/Mullvad VPN' '/opt/Mullvad VPN' \
   && semanage fcontext -a -t usr_t '/usr/lib/opt/Mullvad.VPN(/.*)?' \
   && rpm-ostree install -y ${MULLVAD_DOWNLOAD}
 
