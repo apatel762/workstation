@@ -6,7 +6,7 @@ ARG FEDORA_VERSION
 ARG RPM_FUSION_FREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${FEDORA_VERSION}.noarch.rpm
 ARG RPM_FUSION_NONFREE=https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${FEDORA_VERSION}.noarch.rpm
 
-RUN ostree remote add "Mullvad VPN" https://repository.mullvad.net/rpm/stable/mullvad.repo
+RUN ostree remote add "Mullvad" https://repository.mullvad.net/rpm/stable/mullvad.repo
 
 RUN rpm-ostree install -y \
   ${RPM_FUSION_FREE} \
