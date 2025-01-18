@@ -10,8 +10,7 @@ RUN rpm-ostree install -y \
   ${RPM_FUSION_FREE} \
   ${RPM_FUSION_NONFREE}
 
-ADD --checksum=sha256:9d66079a772f2edb9f3a900ff66d09f22e55922a492c98a237966a4a32284227 \
-  https://repository.mullvad.net/rpm/stable/mullvad.repo /etc/yum.repos.d/mullvad.repo
+ADD https://repository.mullvad.net/rpm/stable/mullvad.repo /etc/yum.repos.d/mullvad.repo
 
 RUN rpm-ostree install -y \
   chromium \
