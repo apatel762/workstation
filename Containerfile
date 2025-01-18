@@ -12,7 +12,7 @@ RUN rpm-ostree install -y \
 
 # Mullvad VPN
 ARG MULLVAD_VERSION=2025.2
-ARG MULLVAD_ARCH=aarch64
+ARG MULLVAD_ARCH=x86_64
 ARG MULLVAD_URL=https://github.com/mullvad/mullvadvpn-app/releases/download/${MULLVAD_VERSION}/MullvadVPN-${MULLVAD_VERSION}_${MULLVAD_ARCH}.rpm
 ARG MULLVAD_DOWNLOAD=/tmp/mullvad.rpm
 
