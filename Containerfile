@@ -10,7 +10,13 @@ RUN rpm-ostree install -y \
   ${RPM_FUSION_FREE} \
   ${RPM_FUSION_NONFREE}
 
-ADD https://repository.mullvad.net/rpm/stable/mullvad.repo /etc/yum.repos.d/mullvad.repo
+# Mullvad VPN
+ARG MULLVAD_VERSION=2025.2
+ARG MULLVAD_ARCH=aarch64
+ARG MULLVAD_URL=https://github.com/mullvad/mullvadvpn-app/releases/download/${MULLVAD_VERSION}/MullvadVPN-${MULLVAD_VERSION}_${MULLVAD_ARCH}.rpm
+ARG MULLVAD_DOWNLOAD=/tmp/mullvad.rpm
+
+ADD ${MULLVAD_URL} ${MULLVAD_DOWNLOAD}
 
 RUN rpm-ostree install -y \
   chromium \
@@ -22,7 +28,7 @@ RUN rpm-ostree install -y \
   pamu2fcfg \
   gnome-shell-extension-blur-my-shell \
   gnome-shell-extension-appindicator \
-  mullvad-vpn
+  ${MULLVAD_DOWNLOAD}
 
 COPY rootfs/etc /etc
 COPY rootfs/usr /usr
