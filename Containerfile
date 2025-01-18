@@ -6,6 +6,8 @@ ARG FEDORA_VERSION
 ARG RPM_FUSION_FREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${FEDORA_VERSION}.noarch.rpm
 ARG RPM_FUSION_NONFREE=https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${FEDORA_VERSION}.noarch.rpm
 
+RUN ostree remote add "Mullvad VPN" https://repository.mullvad.net/rpm/stable/mullvad.repo
+
 RUN rpm-ostree install -y \
   ${RPM_FUSION_FREE} \
   ${RPM_FUSION_NONFREE}
@@ -19,7 +21,8 @@ RUN rpm-ostree install -y \
   pam-u2f \
   pamu2fcfg \
   gnome-shell-extension-blur-my-shell \
-  gnome-shell-extension-appindicator
+  gnome-shell-extension-appindicator \
+  mullvad-vpn
 
 COPY rootfs/etc /etc
 COPY rootfs/usr /usr
