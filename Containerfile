@@ -6,11 +6,12 @@ ARG FEDORA_VERSION
 ARG RPM_FUSION_FREE=https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-${FEDORA_VERSION}.noarch.rpm
 ARG RPM_FUSION_NONFREE=https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-${FEDORA_VERSION}.noarch.rpm
 
-RUN ostree remote add "mullvad-stable" https://repository.mullvad.net/rpm/stable/mullvad.repo
-
 RUN rpm-ostree install -y \
   ${RPM_FUSION_FREE} \
   ${RPM_FUSION_NONFREE}
+
+ADD --checksum=sha256:9d66079a772f2edb9f3a900ff66d09f22e55922a492c98a237966a4a32284227 \
+  https://repository.mullvad.net/rpm/stable/mullvad.repo /etc/yum.repos.d/mullvad.repo
 
 RUN rpm-ostree install -y \
   chromium \
