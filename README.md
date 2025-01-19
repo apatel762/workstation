@@ -127,6 +127,26 @@ gpg --list-secret-keys
 
 You should see the key.
 
+## Setup Mullvad VPN
+
+Sadly this can't be automated, because the app seems to use `/opt` to store data, and we can't manage `/opt` using `ostree`.
+
+Instead, we must manually layer the app.
+
+```bash
+sudo ostree remote add "mullvad-stable" https://repository.mullvad.net/rpm/stable/mullvad.repo
+rpm-ostree install -y mullvad-vpn
+systemctl reboot
+```
+
+After a hopefully successful reboot:
+
+```bash
+sudo systemctl enable --now mullvad-daemon
+```
+
+If you have the dotfiles repo set up, the Mullvad GUI should start up automatically, with an appindicator in the corner of the screen. **Take some time to go through the GUI and set things up.**
+
 ---
 
 ## Development
