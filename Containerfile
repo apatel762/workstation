@@ -1,4 +1,4 @@
-ARG FEDORA_VERSION=41
+ARG FEDORA_VERSION=42
 
 FROM quay.io/fedora-ostree-desktops/silverblue:${FEDORA_VERSION}
 
