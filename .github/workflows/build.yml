@@ -82,7 +82,7 @@ jobs:
     # Sign the image. ('master' only)
 
     - name: Set up cosign
-      uses: sigstore/cosign-installer@v3.8.2
+      uses: sigstore/cosign-installer@v3.9.0
       if: github.event_name != 'pull_request'
 
     - name: Sign container image
