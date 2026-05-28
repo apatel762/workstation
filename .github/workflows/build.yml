@@ -90,7 +90,7 @@ jobs:
       run: |
         DIGEST=$(echo '${{ steps.push_to_registry.outputs.outputs }}' | jq -r '.digest')
         IMAGE="${{ steps.build_image.outputs.image }}"
-        cosign sign -y --key env://KEY --bundle signature.bundle "${IMAGE}@${DIGEST}"
+        cosign sign -y --key env://KEY "${IMAGE}@${DIGEST}"
       env:
         KEY: "${{ secrets.COSIGN_PRIVATE_KEY }}"
         COSIGN_PASSWORD: "${{ secrets.COSIGN_PRIVATE_KEY_PASSWORD }}"
