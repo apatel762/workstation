@@ -88,9 +88,10 @@ jobs:
     - name: Sign container image
       if: github.event_name != 'pull_request'
       run: |
-        cosign sign -y --key env://KEY ${{ steps.build_image.outputs.image }}@${TAGS}
+        DIGEST=$(echo '${{ steps.push_to_registry.outputs.outputs }}' | jq -r '.digest')
+        IMAGE="${{ steps.build_image.outputs.image }}"
+        cosign sign -y --key env://KEY --bundle signature.bundle "${IMAGE}@${DIGEST}"
       env:
-        TAGS: ${{ steps.push_to_registry.outputs.outputs && fromJSON(steps.push_to_registry.outputs.outputs).digest }}
         KEY: "${{ secrets.COSIGN_PRIVATE_KEY }}"
         COSIGN_PASSWORD: "${{ secrets.COSIGN_PRIVATE_KEY_PASSWORD }}"
 
