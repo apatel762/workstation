@@ -81,19 +81,18 @@ jobs:
     # -----------------------------------------------------------------
     # Sign the image. ('master' only)
 
-    - name: Set up cosign
+    - name: Install cosign
+      if: github.event_name != 'pull_request'
       uses: sigstore/cosign-installer@v4.1.2
+    
+    - name: Sign the published container image
       if: github.event_name != 'pull_request'
-
-    - name: Sign container image
-      if: github.event_name != 'pull_request'
-      run: |
-        DIGEST=$(echo '${{ steps.push_to_registry.outputs.outputs }}' | jq -r '.digest')
-        IMAGE="${{ steps.build_image.outputs.image }}"
-        cosign sign -y --key env://KEY "${IMAGE}@${DIGEST}"
       env:
-        KEY: "${{ secrets.COSIGN_PRIVATE_KEY }}"
-        COSIGN_PASSWORD: "${{ secrets.COSIGN_PRIVATE_KEY_PASSWORD }}"
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        COSIGN_PASSWORD: ${{ secrets.COSIGN_PRIVATE_KEY_PASSWORD }}
+      run: |
+        cosign sign --yes --key env://COSIGN_PRIVATE_KEY \
+          ${{ steps.build_image.outputs.image }}@${{ fromJSON(steps.push_to_registry.outputs.outputs).digest }}
 
     # ----------------------
     # - END PIPELINE STEPS -
